@@ -43,7 +43,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <cstring>
-
+#include <cstdio>
 namespace dcollide {
     Exception::Exception(const std::string& errorMessage)
             : mErrorMessage(errorMessage) {

@@ -30,9 +30,9 @@
  *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS         *
  *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE                *
  *******************************************************************************/
+#include <climits>
 
 #include "debuglog.h"
-
 #include "timing.h"
 #include "exceptions/exception.h"
 

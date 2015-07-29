@@ -14,7 +14,8 @@ else (USE_SSE)
 endif (USE_SSE)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-    # sse wanted?
+	set(CMAKE_CXX_FLAGS "-fpermissive ${CMAKE_CXX_FLAGS}")
+# sse wanted?
     if (DCOLLIDE_USE_SSE EQUAL 2)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=pentium4 -msse2 -mfpmath=sse")
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=pentium4 -msse2 -mfpmath=sse")
