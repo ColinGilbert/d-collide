@@ -1,0 +1,331 @@
+
+/* Reset rule
+----------------------------------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    outline: none;
+    border: none;
+    font-weight: normal;
+    font-size: 1em;
+}
+
+
+/* Basic structure
+----------------------------------------------------------------------------*/
+
+body {
+    background: #FFF;
+    color: #CCC;
+	font: 11pt/150%  "Gill Sans", "Trebuchet MS", Tahoma, Helvetica, Arial, sans-serif;
+}
+
+a:link, a:visited {
+    color: #660;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover {
+    color: #990;
+    text-decoration: underline;
+}
+
+strong, b {
+    color: #000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em 0 0.75em;
+}
+
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: #CC0;
+    font-weight: normal;
+}
+
+h1 {
+    display: block;
+    border-bottom: 1px solid #EEE;
+    font-size: 2.0em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.3em;
+}
+
+h5 {
+    font-size: 1.2em;
+}
+
+p {
+    margin-top: 1.3em;
+}
+
+dt {
+    margin-top: 0.5em;
+    font-size: 1.2em;
+}
+
+dd {
+    margin-left: 2em;    
+}
+
+#header {
+    background: #112 url("stripes-dark.gif");
+    position: relative;
+    color: #CCC;
+    height: 64px;
+}
+
+#content {
+    padding: 0.5em 2em 15em;
+    background: url("shadow.gif") repeat-x;
+    overflow: hidden;
+    overflow: auto;
+    color: #333;
+}
+
+#footer {
+    padding: 1em 1em 2em;
+    color: #AAA;
+    text-align: center;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    border-top: 1px solid #CCC;
+}
+
+#content ul {
+    margin: 0.5em 0;
+}
+
+#content ul li {
+    padding: 0.2em 0 0.3em 2em;
+    background: url("bullet.gif") no-repeat 0.5em 0.7em;
+}
+
+#d-collide-logo {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+}
+
+
+/* Navigation
+----------------------------------------------------------------------------*/
+
+.current {
+    color: #440;
+}
+
+#menubar {
+    position: absolute;
+    bottom: 4px;
+    right: 16px;
+}
+
+#menubar li a {
+    padding: 0.3em;
+    color: #990;
+    text-transform: uppercase;
+}
+
+#menubar li a:hover {
+    color: #FF8;
+    text-decoration: none;
+}
+
+#menubar li {
+    display: inline;
+}
+
+.nav {
+    border-bottom: 1px solid #EEC;
+    font-family: Courier, "Courier New", fixed, monospace;
+    text-align: right;
+}
+
+#content .tabs ul li,
+#content .tabs ul li a {
+    display: inline;
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+
+#content .tabs ul {
+    overflow: auto;
+    clear: both;
+}
+
+* html #content .tabs ul {
+    height: 1%;
+}
+
+#content .tabs ul li {
+    float: left;
+    margin-right: 1px;
+}
+
+#content .tabs ul li a {
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    padding: 0.5em;
+    text-transform: uppercase;
+    color: #CC0;
+    text-align: center;
+    line-height: 150%;
+    border: 1px solid #F8F8F8;
+}
+
+#content .tabs ul li a:hover {
+    background: #EEE;
+    border-color: #DDD;
+    text-decoration: none;
+    color: #770;
+}
+
+#content .tabs-first ul li a {
+    width: 10em;
+}
+
+#content .tabs ul li.current a {
+    border-color: #CCC;
+    color: #770;
+}
+
+/* Tables
+----------------------------------------------------------------------------*/
+
+table {
+    border-collapse: collapse;
+    margin: 0.5em 0;
+    color: #444;
+}
+
+table td,
+table th {
+    padding: 0.3em;
+    vertical-align: top;
+}
+
+table th {
+    background: #770;
+    color: #FFF;
+}
+
+table td {
+    border-bottom: 1px solid #EEE;
+}
+
+#content table .mDescRight ul li {
+    background: none;
+    padding: 0.3em 0;
+    margin-left: 1.5em;
+    list-style: disc;
+    color: #666;
+}
+
+table.memname td,
+table.memname th {
+    border: none;
+    padding: 0;
+}
+
+
+/* Code & preformatted
+----------------------------------------------------------------------------*/
+
+code,
+.el,
+.indexkey .el,
+.memname,
+.memItemLeft,
+.memItemRight,
+.paramtype,
+.paramname,
+.indexkey {
+    font-family: Courier, "Courier New", fixed, monospace;
+}
+
+.indexkey a {
+	font-family: "Myriad Web", "Myriad Pro", "Lucida Grande", "Trebuchet MS", Tahoma, Helvetica, Arial, sans-serif;
+}
+
+.memname {
+    white-space: nowrap;
+}
+
+/*.memname,*/
+.paramtype,
+.paramname,
+.memItemLeft {
+    color: #777;
+    white-space: nowrap;
+}
+
+.fragment {
+    line-height: 120%;
+}
+
+
+/* Dynsections/dynheader
+----------------------------------------------------------------------------*/
+
+.dynheader {
+    cursor: pointer;
+    color: #CC0;
+}
+
+.dynheader:after {
+    content: " (toggle)";
+    color: #DDD;
+}
+
+.dynheader:hover {
+    text-decoration: underline;
+    color: #888;
+}
+
+
+/* Members
+----------------------------------------------------------------------------*/
+
+.memitem {
+    background: #EEE;
+    padding: 0.2em 0.5em;
+    margin: 0.5em;
+    border: 1px solid #CCC;
+    border-left: none;
+    border-right: none;
+}
+
+.memproto {
+    background: #F8F8F8;
+    border: 1px solid #CCC;
+    padding: 0.2em 0.5em;
+}
+
+.memdoc {
+    
+}
+
+
+/* Source viewer
+----------------------------------------------------------------------------*/
+
+pre.fragment a {
+    color: #770;
+}
+

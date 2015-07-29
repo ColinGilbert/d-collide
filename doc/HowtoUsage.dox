@@ -1,0 +1,82 @@
+/*!
+ * \page howtousage GettingStarted: using dcollide in your application
+ *
+ * This page is a short tutorial which describes what has to be be done to integrate
+ * D-Collide in your own application.
+ * 
+ * We assume that you already have a complete scene in your application, in
+ * which you want to integrate our collision detection D-Collide.
+ *
+ * Of course you must include D-Collide in your files: #include <dcollide.h>
+ * 
+ * The next thing you must do is create a new object of type \ref dcollide::World,
+ * which you can do in for ways:
+ * \li by simply creating a "naked" world without any arguments.
+ * \li by passing a dcollide::Vector3, representing the world dimension
+ * \li by passing two vectorss, representing the coordinates of the 
+ * minimum and the maximum of the world
+ * \li by passing an object of type \ref WorldParameters. This enables you
+ * to choose the different algorithms that will be used.
+ *
+ * Please note that the defined worldsize should have at least the same size 
+ * as the scene you are using. Even though the library will increase the world's
+ * size automatically if something goes beyond the borders, this may lead to a
+ * short time lag.
+ *
+ * The next step is to model your scene in the collision world. To do this, you
+ * create (hierarchies of) \ref dcollide::Proxy objects which resemble/approximate
+ * the (physically relevant) objects of your scene.\n
+ * These are the steps for each object: (see \subpage proxies for a more
+ * detailed explanation)
+ * \li create a dcollide::Proxy by calling dcollide::World::createProxy, 
+ * there you can pass a dcollide::Shape object and also choose a 
+ * dcollide::ProxyType (default is rigid)
+ * \li the newly created proxy always lies unrotated in the origin of the 
+ * world, so you may want to translate or rotate it. 
+ * (see \ref dcollide::Proxy::translate() and \ref dcollide::Proxy::rotate());
+ * \li at last you must add the proxy to the world by calling \ref dcollide::World::addProxy()
+ * or to another existing Proxy (\ref dcollide::Proxy::addChild())
+ *
+ * You can also build a hierarchy with proxies ("scene graph"), just use
+ * dcollide::Proxy::addChild() instead of dcollide::World::addProxy() (see also
+ * \ref proxies)
+ * 
+ * After adding all objects to the world which should be present at the start of
+ * the simulation, you can start the simulation by calling
+ * dcollide::World::prepareSimulation(). This initializes all necessary parts of
+ * D-Collide
+ * 
+ * Now you can retrieve all collisions by simply calling
+ * \ref dcollide::World::calculateAllCollisions(). To only get collisions of one
+ * single proxy you can call \ref dcollide::World::calculateAllCollisionsWith.
+ * These function return a \ref dcollide::WorldCollisions struct with information
+ * about the collisions in the current setup. \n
+ * You probably want to call \ref dcollide::WorldCollisions::getNarrowPhaseCollisions(),
+ * which gives you a std::list<CollisionInfo>. 
+ * Each \ref CollisionInfo represents one contact between intersecting shapes and
+ * contains the collision point in space, the penetration depth and the
+ * penetration normal.
+ *
+ * If you do not need detailed information about the collisions, you should
+ * consider skipping the narrowphase. (See \ref phases for an explanation of the
+ * different phases in D-Collide.) This speeds up collision detection, and you
+ * can use \ref dcollide::WorldCollisions::getRigidMiddlePhaseCollisions() 
+ * to get information about bounding-box based collisions in the scene.
+ *
+ * Thats it! To add other Proxies during the simulation, just
+ * perform the steps mentioned above.
+ * In case an objects in your scene is moving during the simulation (which will
+ * happen quite often) you must tell this D-Collide by using the already
+ * mentioned \ref dcollide::Proxy::translate() or \ref dcollide::Proxy::rotate(). You also
+ * can use \ref dcollide::Proxy::setState(), which takes a 4x4 dcollide::Matrix 
+ * as argument.
+ *
+ * As simple code examples, you can use our small testing programs in the mytest
+ * directory. Especially broadphasetest.cpp covers all steps mentioned in this
+ * tutorial.
+ *
+ * As a quite big code example, you can use our testapp, which is linked against
+ * Ogre3D, CeGui and (later) ODE.
+ */
+
+// vim: et sw=4 ts=4 filetype=cpp

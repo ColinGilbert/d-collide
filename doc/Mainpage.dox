@@ -1,0 +1,11 @@
+/*!
+ * \mainpage
+ *
+ * \li \subpage howtousage 
+ * \li \subpage world
+ * \li \subpage proxies
+ * \li \subpage phases
+ * \li \subpage rigiddeformable
+ */
+
+// vim: et sw=4 ts=4 filetype=cpp

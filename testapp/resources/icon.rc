@@ -1,0 +1,14 @@
+/*
+OutputExt=res
+*/
+
+//MS Visual C++ compatible header
+#define APSTUDIO_READONLY_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_READONLY_SYMBOLS
+//end of MS Visual C++ compatible header
+
+LANGUAGE LANG_NEUTRAL, 0
+ICON_0 ICON "d-collide.ico"
+
+

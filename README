@@ -1,0 +1,235 @@
+                    D-Collide - Collision Detection Library
+                   -----------------------------------------
+                       http://d-collide.sourceforge.net
+
+
+1. Introduction
+2. Bug Reporting
+3. Getting Started
+   3.1 Linux
+   3.2 Windows
+   3.3 Mac OS X
+4. CMake Settings
+5. Compile Targets
+6. License Agreement
+
+
+1.  Introduction
+================================================================================
+D-Collide is a collision detection library with support for both, rigid and
+deformable objects. It is written in C++ and platform independent (currently
+supporting Linux, Windows and Mac OS X).
+
+Feedback and questions are welcome on the users maillinglist at
+d-collide-users@lists.sourceforge.net.
+
+
+2. Bug Reporting
+================================================================================
+Bug reports are welcome, please send us your bug reports to
+d-collide-users@lists.sourceforge.net.
+
+
+3. Getting Started
+================================================================================
+This section describes how to setup D-Collide for different platforms.
+In addition this section describes the installation of the "testapp" which comes
+with D-Collide and provides several scenes to test the behaviour and performance
+of different collision detection algorithms.
+
+D-Collide uses CMake (see http://www.cmake.org) as build system, so for building
+D-Collide, you need CMake. CMake is NOT required once D-Collide has been
+installed.
+The testapp uses OGRE and CEGUI, which need to be installed if you want to build
+the testapp.
+
+Note that D-Collide can be used completely without the testapp. The testapp
+provides optional test scenes only.
+
+3.1 Linux
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Required Prerequisites:
+ * CMake      (http://www.cmake.org)
+ * PThreads   (comes with your Linux distribution)
+ * pkg-config (comes with your Linux distribution)
+ * g++ 4.x    (comes with your Linux distribution)
+
+Optional Prerequisites (required for building the testapp):
+ * OGRE   >= 1.4.0 (e.g. on Kubuntu 7.10: apt-get install libogre-dev)
+ * CEGUI  >= 0.5.0 (e.g. on Kubuntu 7.10: apt-get install libcegui-mk2-dev)
+ * OIS    >= 0.6.0 (e.g. on Kubuntu 7.10: apt-get install libois-dev)
+ * lib3ds          (e.g. on Kubuntu 7.10: apt-get install lib3ds-dev)
+
+Optional Prerequisites (required for generating the API documentation):
+ * doxygen
+
+Compilation/Installation Steps:
+ a) Download D-Collide from d-collide.sourceforge.net
+ b) Extract the downloaded archive
+    b1) For a .tar.gz archive type:
+         $ tar xzvf d-collide.tar.gz
+    b2) For a .tar.bz2 archives type:
+         $ tar xjvf d-collide.tar.bz2
+ c) Enter the directory 'd-collide' and start configuration
+     $ cd d-collide
+     $ cmake .
+ d) Build D-Collide
+     $ make
+ e) Install D-Collide
+     $ make install
+
+3.2 Windows
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Getting the D-Collide testapp running under Microsoft Windows isn't such a big
+thing as we provide a Windows Installer. Please download it from the project
+website at http://d-collide.sourceforge.net and start it. Simply follow the
+instructions and select to install the testapp. When the installer finishes
+you're ready to run the testapp out of Start.
+
+If you desire to contribute in developing or just want to compile your own,
+possibly modified, version of D-Collide you can still use the Windows Installer
+to setup your system. But Additionally you need to install at least a supported
+Compiler. Currently we support the following compilers:
+ * Microsoft Visual C++   >=  8.0 SP1
+ * Intel C++ Compiler     >= 10.0
+ 
+After you've installed your compiler, please run the D-Collide setup and select
+to install 'Developing Files' in the further processing. When the setup routine
+finishes your system is ready to compile D-Collide and all of its subcomponents.
+
+What you need to do, to compile D-Collide:
+ a) Open a Command Line
+ b) Change to the installation directory
+ c) Configure your environment
+    c1) If you use the Microsoft Visual C++ Compiler, please call the
+        'vsvars32.bat' of your Visual C++ Installation
+          $ "%VCInstallDir%\bin\vsvars32.bat"
+    c2) If you use the Intel C++ Compiler, please call the 'iclvars.bat'
+        of your Compiler Installation
+          $ "%ICPP_COMPILER10%\IA32\Bin\iclvars.bat"
+ c) Create a build directory and configure D-Collide
+     $ mkdir build
+     $ cd build
+     $ cmake -G "NMake Makefiles" ..
+ d) Build D-Collide
+     $ nmake
+
+When you followed the above steps you've just compiled your first own version of
+D-Collide. And now have fun ;-)
+
+3.3 Mac OS X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The following should work with Mac OS X 10.4 and 10.5 (tested with 10.5.1).
+
+To get the TestApp.app up and running most easily, make sure you have Apple's
+free Xcode Developer Tools installed. Then download (see the link below) a
+suitable binary Ogre SDK (tested with 1.4.5) and move it to "/Developer/Ogre"
+(you might have to rename it).
+
+Then copy or symlink (recommended) each framework from
+"/Developer/Ogre/Dependencies" to "/Library/Frameworks" to ensure that each
+framework will be found. Later, during compilation, you might see a message
+saying "OgreCEGUIRenderer.h: No such file or directory" - in this case copy
+"/Developer/Ogre/Samples/include/OgreCEGUIRenderer.h" to any valid include
+path, if it's not there yet - "/usr/local/include" is recommended here.
+
+At this point you should have a working Ogre SDK.
+
+Now you need to install CMake, doxygen and CppUnit. You could get all of those
+easily through Fink (or possibly DarwinPorts) or - as described below -
+install manually. As for CMake, just get the sources and compile and install
+it by issuing "./configure && make && sudo make install".
+
+Doxygen comes as an app-bundle. Drag it over to "/Applications" and make sure
+the binaries are in your $PATH, either by symlinking each one from
+"/Applications/Doxygen.app/Contents/Resources/" to eg. "/usr/local/bin" (if
+that's in your path) or by adding the mentioned directory to your shell's
+PATH-variable.
+
+CppUnit should be built and installed from sources the same way as CMake.
+Thats it - for the prerequisites!
+
+Now fetch a the D-Collide sources and unpack it by typing:
+    $ tar xfzv d-collide.tar.gz
+
+Change into D-Collide's root directory and create a new home for the binaries:
+    $ mkdir build && cd build
+
+Have CMake configure D-Collide for your platform:
+    $ cmake ..
+
+If this all went well, build:
+    $ make -j3
+
+(omit the "-j3" if you have an old single core, like a CoreSolo - increase the
+number for 4- or 8-core Xeons appropriately).
+
+Finally you should be able to double click and run the TestApp.app found in
+the "testapp"-directory.
+
+Xcode:          http://connect.apple.com/ (or check your Mac OS X DVD)
+Ogre3D:         http://www.ogre3d.org
+CMake:          http://cmake.org/HTML/Download.html
+Doxygen:        http://www.stack.nl/~dimitri/doxygen/download.html#latestsrc
+Fink:           http://finkproject.org/
+DarwinPorts:    http://darwinports.com/
+D-Collide:      http://d-collide.sourceforge.net/
+
+
+4. CMake Settings
+================================================================================
+CMAKE_BUILD_TYPE        Debug
+                        Release
+INSTALL_DIR             [any valid directory]
+cmake -D[VARIABLE]=[VALUE]
+
+
+5. Compile Targets
+================================================================================
+A list of all compile/make targets of D-Collide can be found in the list below.
+To every target a brief description is given.
+
+ * d-collide-static
+   Builds D-Collide as static library.
+   
+ * d-collide-shared
+   Builds D-Collide as shared library.
+   
+ * modelloader
+   Static library which is used by the demo application to load several
+   types/formats of 3d models.
+   
+ * testapp
+   The demo application for D-Collide.
+   
+ * tests
+   Builds the CppUnit tests for D-Collide.
+   
+ * all
+   Builds all targets which are mentioned before.
+ 
+ * test
+   Builds d-collide-static, tests and runs the CppUnit tests afterwards.
+ 
+ * clean
+   Removes all files from a previous build. This doesn't delete anything
+   belonging to the config. if you wish to make a new clean configure you
+   must at least delete the CMakeCache.txt and rerun cmake. Refer to
+   section 3 of this README for more details on CMake and the configure
+   process.
+ 
+ * install
+   Installs the built files, the default Installation directory is:
+   (on Linux)
+   C:\Programme\D-Collide (on Windows)
+   (on Mac OS X)
+   
+   Please see section 4 for more details how to configure another installation
+   directory.
+
+4. License Agreement
+================================================================================
+D-Collide is  licensed under the 3-clause BSD license,  it is distributed in the
+hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the LICENSE
+file for more details.

@@ -1,0 +1,36 @@
+// AB: note: this part of the documentation is meant to explain _concepts_ not
+//           concrete classes.
+//           in particular this file is NOT meant to discuss the current World
+//           API details, but reference it at most.
+
+/*!
+ * \page world World
+ *
+ * The world as seen by d-collide and thus by the collision detection
+ * algorithms is represented by the \ref dcollide::World class. Consequently this class is
+ * the most central class of this library.
+ *
+ * The \ref dcollide::World class provides methods for collision detection (see \ref
+ * dcollide::World::calculateAllCollisions) and controls the algorithms used by
+ * the different phases. It is possible to change the algorithms by passing the 
+ * World-constructor a \ref WorldParameters object.
+ *
+ * A world is usually created with certain parameters in particular the maximal
+ * size of the world. These parameters are specified using the \ref
+ * dcollide::WorldParameters class, which is also intended to provide means to influence
+ * the choice of algorithms used by the library.
+ *
+ * Other than managing the collision detection used, the \ref dcollide::World class is
+ * primarily a container for \ref dcollide::Proxy objects and also controls their creation
+ * (see \ref dcollide::World::createProxy). A \ref dcollide::Proxy is an
+ * object in the 3D-world that can collide with other objects (i.e. with other
+ * proxies), so for example a car and a wall would be proxies (usually two
+ * different proxies). See \ref proxies and the class \ref dcollide::Proxy for details.
+ */
+
+
+// TODO:
+// explain time "steps" (once implemented...) and how to undo a step!
+
+
+// vim: et sw=4 ts=4 filetype=cpp

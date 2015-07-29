@@ -1,0 +1,39 @@
+/*!
+ * \page rigiddeformable Rigid versus Deformable objects/proxies
+ *
+ *
+ * The d-collide project differentiates proxy objects in so called rigid proxies and deformable
+ * proxies. This distinction is widely acknowledged by publications concerning collision detection.
+ * 
+ * Deformable proxies support a wider set of transformations than rigid proxies. Their vertices
+ * may be transformed arbitrarily in a non-linear fashion, whereas the rigid proxies are limited
+ * to linear transformations. In d-collide transformation of rigid proxies is limited to rotation
+ * and transformation of themselves and their subproxies. So all kind of "stiff" relations may be
+ * expressed using rigid proxy hierarchies. Examples for that are rotating wheels on a car, or the
+ * moon orbiting the earth.
+ * 
+ * Deformable proxies have no constraints on the movement of their vertices, so all kind of transformations
+ * may be expressed. Examples are cloth animation, weighted sceletal animation and jumping balls. The
+ * freedom of deformable proxies comes at a cost; as no assumptations may be made on the position of
+ * vertices, every vertice must be looked at eached frame. As we use accelerating data structures of the
+ * dictionary type to speed up the collision detection, there comes an increased update cost for deformable objects.
+ * The worst case update cost is O(n), whereas certain rigid transformation as translation have no update cost.
+ * What we can do is to make compromises, we may allow proxies to deform, but keep certain constraints.
+ *
+ * There are currently 3 algorithms in d-collide, which reflect these observations:
+ * 
+ * Rigid collision detection:
+ * Accelerating data structure: top-down aabb hierarchy
+ * Operations: translate, rotate
+ * 
+ * Deformable collision detection:
+ * Accelerating data structure: spatial hashing function
+ * Operations: translate, rotate, deform
+ * 
+ * Deformable collision detection:
+ * Accelerating data structure: bottom-up sphere hierarchy
+ * Operations: translate, rotate, deform
+ * We plan to constrain allowed deformations on this algorithm
+ * type to reduce update time.
+ */
+// vim: et sw=4 ts=4 filetype=cpp

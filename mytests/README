@@ -1,0 +1,6 @@
+This directory contains miscellaneous test program for various aspects of
+d-collide.
+
+These programs are usually "quick-and-dirty" programs, meant primarily to test
+that particular aspect, rather than to write a clean program.
+

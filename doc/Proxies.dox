@@ -1,0 +1,81 @@
+// AB: note: this part of the documentation is meant to explain _concepts_ not
+//           concrete classes.
+//           in particular this file is NOT meant to discuss the current Proxy
+//           API details, but reference it at most.
+
+/*!
+ * \page proxies Proxies
+ *
+ * A proxy in the d-collide terminology is simply an object in the 3d-world
+ * that can collide with other objects. For example a car and a wall would both
+ * be proxies (usually two separate proxies).
+ *
+ * The term "proxy" stems from the fact that usually you have a very detailed
+ * base object that is used for (e.g.) rendering the object, but you want to use
+ * a different, much less detailed object for collision detection, to improve
+ * the collision detection speed. This less detailed object therefore serves as
+ * a "proxy" for the actual object.
+ *
+ * Attention: The Proxy constructors are protected. Use \ref World::createProxy
+ * methods to create them for a given world.
+ * 
+ * dcollide::Proxy objects can build a hierarchy. They can be added 
+ * - to the \ref dcollide::World as "top-level-proxies" - see \ref World::addProxy
+ * - to other existing proxies as children - see \ref Proxy::addChild
+ * This hierarchy is also called a scene graph, with the \ref dcollide::World 
+ * beeing the root node.
+ *
+ * The \ref dcollide::Proxy object defines the position and orientation (i.e. a 
+ * rotation matrix), the \ref dcollide::Shape of the object, it's type (rigid or
+ * deformable, see \ref rigiddeformable) as well as some other properties 
+ * (self-collidable, moving, ...) of the object.
+ *
+ * Proxies can have a \ref dcollide::Shape defining how it looks like, i.e. 
+ * whether it is a \ref dcollide::Box, a \ref dcollide::Sphere or even an
+ * arbitrary triangle \ref dcollide::Mesh. A Proxy cannot have more than one
+ * \ref dcollide::Shape, but as mentioned before, Proxies can act as containers 
+ * for other proxies. Making use of the hierarchy, it is possible to  model a 
+ * complex object using basic geometrical shapes (which is important for the
+ * speed of the collision detection).
+ * 
+ * A \ref dcollide::Shape object itself cannot have
+ * children and also cannot change its position or orientation (both are usually
+ * defined by the class itself, e.g. the center of a \ref dcollide::Sphere is always at
+ * (0,0,0)). These parameters are always defined by the parent proxy.
+ *
+ * Whenever a \ref dcollide::Proxy is moved or rotated, the whole hierarchy moves
+ * or rotates along, i.e. the Proxy objects behave like a scenegraph. When a
+ * child of a \ref dcollide::Proxy is moved or rotated, it does not influence the 
+ * position or orientation of its parent.
+ */
+
+// TODO:
+// a few images (.jpg or similar, not ascii art) would be nice:
+// * one example per Shape class - ideally for every Shape class, but
+//   the "most important" (Box, Sphere, Mesh) would suffice.
+//   note that the docs should say "examples of some shape types", NOT "of ALL
+//   shape types", because we dont know if someone someday will add another type
+//
+//   note: full 3D images are not necessary. a few 2d examples created using gimp
+//   or so would be sufficient. these images are not meant to show how nice our
+//   shapes are, but rather to simplify the understanding of "Proxy" and
+//   "Shape".
+// * a non-trivial proxy hierarchy, possibly as a sequence of images. probably a
+//   (very simple) car (probably 2d for simplified graphic creation):
+//   1. image: just a box (with image text "One Proxy with one Box Shape")
+//   2. image: a box + 1 wheel (sphere), with box from (0,0) to (w,h) and the
+//      spheres center around (0,0)
+//      with image text: "Proxy from previous
+//      image + 4 Child proxies, each with a Sphere Shape. Note that they all
+//      overlap each other because the cildren have not yet been moved"
+//   3. image: box + 2 wheels (spheres), with box from (0,0) to (w,h) and the
+//      spheres "under" the box (one left, one right) so that it actually looks
+//      like some kind of simple car
+//      with image text: "Proxies from previous image, but the child proxies
+//      have been moved to their final location"
+//   maybe 4. image: like before, but moved away from the origin
+//            with image text: "Proxies from previous image, but the toplevel
+//            proxy has been moved away from the center. Note that the child
+//            proxies have moved along"
+
+// vim: et sw=4 ts=4 filetype=cpp

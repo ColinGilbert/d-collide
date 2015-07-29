@@ -1,0 +1,47 @@
+/*!
+ * \page phases Collision detection phases
+ *
+ * This page is meant to provide additional information on how collision
+ * detection is performed and implemented by d-collide. Knowledge of the
+ * concepts of the collision detection phases may be helpful to design your
+ * scene so that collision detection can be performed as efficient as possible,
+ * but it is not strictly necessary for using this library.
+ *
+ * d-collide collision detection is made in three phases:
+ * \li The broadphase
+ * \li The middlephase
+ * \li The narrowphase
+ *
+ * We use our own terminology here: "broadphase" is meant as a very rough
+ * collision detection phase, which is only meant to reduce the number of
+ * possible collisions pairs significantly (from theoretically n²). This
+ * phase is handled by the \ref dcollide::BroadPhase class and is (currently)
+ * implemented by an octree over the Axis Aligned Bounding Boxes of the toplevel
+ * proxies.
+ *
+ * The middlephase receives its input from the broadphase results and therefore
+ * usually operates on pairs, i.e. most algorithms take exactly one pair with
+ * two (toplevel) proxies (for self-collisions both proxies may actually be one
+ * and the same) and test them for collision. Depending on the type and
+ * properties of the proxies, different algorithms may be used for different
+ * pairs - in particular collision pairs with at least one deformable proxy
+ * involved are usually handled by different algorithms than normal rigid
+ * collisions. The middlephase still works rather imprecise: in particular for
+ * example the rigid algorithms work using a bounding volume hierarchy and
+ * return the collisions of bounding volumes only, not an exact collision point.
+ * Depending on the algorithm, the middlephase may however already provide full
+ * collision information (in which case the narrowphase may be sipped as it is
+ * already included in the middlephase). Note that the return values of
+ * different middlephase algorithms may be completely different, and therefore
+ * it is not usually advised to skip the narrowphase, however it is still
+ * possible and may be useful (e.g. if you know that only one algorithm is used,
+ * of if all algorithms used provide the same or similar information).
+ *
+ * The narrowphase receives its input from the middlephase and performs actual
+ * shape-based collision detection. I.e. for example if two triangle meshes
+ * collide with each other, the narrowphase will perform triangle intersection
+ * tests. The result of the narrowphase is a set of collision points with
+ * possibly additional information. (See \ref dcollide::CollisionInfo)
+ */
+
+// vim: et sw=4 ts=4 filetype=cpp

@@ -1,0 +1,319 @@
+<?xml version="1.0" ?>
+<GUILayout>
+<Window Name="root" Type="DefaultGUISheet">
+    <Window Name="TestSlider" Type="DCollide/Slider" >
+        <Property Name="CurrentValue" Value="0.3" />
+        <Property Name="MaximumValue" Value="1" />
+        <Property Name="ClickStepSize" Value="0.01" />
+        <Property Name="UnifiedMaxSize" Value="{{1,0},{1,0}}" />
+        <Property Name="UnifiedAreaRect" Value="{{0.05,0},{0.5,0},{0.3,0},{0.05,0}}" />
+    </Window>
+    
+    <Window Name="QuitButton" Type="DCollide/Button">
+        <Property Name="UnifiedPosition" Value="{{0.92,0},{0.0,0}}" />
+        <Property Name="UnifiedSize" Value="{{0.07,0},{0.0,24}}" />
+        <Property Name="Text" Value="Quit" />
+    </Window>
+
+    <Window Name="LegendButton" Type="DCollide/Button">
+        <Property Name="UnifiedPosition" Value="{{0.85,0},{0.0,0}}" />
+        <Property Name="UnifiedSize" Value="{{0.07,0},{0.0,24}}" />
+        <Property Name="Text" Value="Legend" />
+    </Window>
+    
+    <Window Name="SceneSelectionBox" Type="DCollide/Combobox">
+        <Property Name="UnifiedPosition" Value="{{0.4,0},{0.0,0}}" />
+        <Property Name="UnifiedSize" Value="{{0.45,0},{0.45,24}}" />
+        <Property Name="UnifiedMaxSize" Value="{{0.45,0},{0.75,0}}" />
+        <Property Name="UnifiedMinSize" Value="{{0.45,0},{0.3,0}}" />
+        <Property Name="ReadOnly" Value="True" />
+    </Window>
+
+    <Window Name="SceneDescription" Type="DCollide/StaticText">
+        <Property Name="UnifiedPosition" Value="{{0.4,0},{0.0,32}}" />
+        <Property Name="UnifiedSize" Value="{{0.59,0},{0.075,0}}" />
+        <Property Name="FrameEnabled" Value="True" />
+        <Property Name="BackgroundEnabled" Value="True" />
+        <Property Name="Alpha" Value="0.7" />
+        <Property Name="InheritsAlpha" Value="False" />
+        <Property Name="HorzFormatting" Value="HorzLeft" />
+        <Property Name="VertFormatting" Value="VertTop" />
+    </Window>
+    
+    <Window Name="FpsLabel" Type="DCollide/StaticText">
+        <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,8}}" />
+        <Property Name="UnifiedSize" Value="{{0.35,0},{0.13,0}}" />
+        <Property Name="FrameEnabled" Value="True" />
+        <Property Name="BackgroundEnabled" Value="True" />
+        <Property Name="Alpha" Value="0.7" />
+        <Property Name="Text" Value="? fps" />
+    </Window>
+
+    <Window Name="ProxyCount" Type="DCollide/StaticText">
+        <Property Name="UnifiedPosition" Value="{{0.0,8},{0.12,16}}" />
+        <Property Name="UnifiedSize" Value="{{0.33,0},{0.05,0}}" />
+        <Property Name="FrameEnabled" Value="True" />
+        <Property Name="BackgroundEnabled" Value="True" />
+        <Property Name="Alpha" Value="0.7" />
+        <Property Name="Text" Value="Proxies (t/r/d): ?" />
+    </Window>
+
+    <Window Name="LegendWindow" Type="DCollide/FrameWindow">
+		<Property Name="AlwaysOnTop" Value="True" />
+        <Property Name="UnifiedPosition" Value="{{0.15,0},{0.15,0}}" />
+        <Property Name="UnifiedMaxSize" Value="{{1.0,0},{1.0,0}}" />
+        <Property Name="UnifiedMinSize" Value="{{0.2,0},{0.1,0}}" />
+        <Property Name="UnifiedSize" Value="{{0.7,0},{0.7,0}}" />
+        <Property Name="CaptionColour" Value="FFDDDDDD" />
+        <Property Name="TitlebarEnabled" Value="True" />
+        <Property Name="InheritsAlpha" Value="False" />
+        <Property Name="Alpha" Value="0.8" />
+        <Property Name="CloseButtonEnabled" Value="True" />    
+        <Property Name="Text" Value="Legend" />
+        
+        <Window Name="LegendText" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.0,24},{0.0,24}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,-24},{1.0,-24}}" />
+            <Property Name="InheritsAlpha" Value="False" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+            <Property Name="Text">Show bounding volumes:  toggles display of the internally used bounding volumes.
+    Rigid objects / object hierarchies use axis-aligned bounding boxes (AABB).
+        green AABB -- currently no intersection with another AABB.
+        dark  blue AABB -- top-level AABB collision. Pair delivered to MiddlePhase.
+        light blue AABB -- AABB collision on hierarchy leaves. Contained shapes are sent to NarrowPhase.
+
+    Deformable objects (currently) use bounding spheres.
+
+Show objects:               Toggles display of the objects. Useful if you want to display NarrowPhase results.
+Show octtree:               Toggles display of the hierarchical grid which partitions the world into sections.
+Show NarrowPhase results:   Paints a small yellow dot at the actual collision points and a green line
+                            visualizing the penetration depth. Additionally the colliding objects will be
+                            colored yellow for the penetrating and purple for the penetrated object. 
+
+Pause:	                    Stop movements and collision calculation.
+Pause movements:	        Stop movements but continue collision calculation.
+
+Skip NarrowPhase:	        do not calculate collision points.
+Skip MiddlePhase:	        stop calculation after broadphase top-level collisions.
+
+Use collision cache:	    store collision points from last frame.
+                            For unmoved objects, the cached information is still valid.
+                            This should cause some speed-up for scenes with (partially) fix collisions.
+            
+Use threads:	            Split the calculation effort to several threads.
+                            Multiprocessor systems should experience a speedup with this option.        
+Use pipeline:	            start the next phase as soon as some results are available        
+                            or wait for a phase to finish before starting the next one.
+            </Property>
+        </Window>
+    </Window>
+    
+    <Window Name="OptionsWindow" Type="DCollide/FrameWindow">
+        <Property Name="UnifiedPosition" Value="{{0.33,-8},{1.0,-164}}" />
+        <Property Name="UnifiedMaxSize" Value="{{0.67,0},{0.0,156}}" />
+        <Property Name="UnifiedMinSize" Value="{{0.67,0},{0.0,156}}" />
+        <Property Name="UnifiedSize" Value="{{0.67,0},{0.0,156}}" />
+        <Property Name="CaptionColour" Value="FFDDDDDD" />
+        <Property Name="TitlebarEnabled" Value="True" />
+        <Property Name="Alpha" Value="0.8" />
+        <Property Name="CloseButtonEnabled" Value="False" /> 
+        <Property Name="Text" Value="Options" />
+
+        <Window Name="ShowOptionPanel" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0,24},{0.0,24}}" />
+            <Property Name="UnifiedSize" Value="{{0.35,0},{1.0,0}}" />
+            <Property Name="Alpha" Value="0.9" />
+            <Property Name="InheritsAlpha" Value="False" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+    
+            <Window Name="ShowBoundingVolumes" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,0}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Show Bounding Volumes" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+
+            <Window Name="ShowProxies" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,24}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Show Objects" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+
+            <Window Name="ShowOctree" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,48}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Show Octree" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+
+            <Window Name="NarrowPhaseResults" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,72}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Show NarrowPhase results" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+        </Window>
+
+        <Window Name="PauseOptionPanel" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.37,24},{0.0,24}}" />
+            <Property Name="UnifiedSize" Value="{{0.25,0},{1.0,0}}" />
+            <Property Name="Alpha" Value="0.9" />
+            <Property Name="InheritsAlpha" Value="False" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+
+            <Window Name="Pause" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,0}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Pause" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+
+            <Window Name="PauseMovements" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,24}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Pause Movements" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+        </Window>
+        
+        <Window Name="SkipOptionPanel" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.37,24},{0.0,88}}" />
+            <Property Name="UnifiedSize" Value="{{0.25,0},{1.0,0}}" />
+            <Property Name="Alpha" Value="0.9" />
+            <Property Name="InheritsAlpha" Value="False" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+
+            <Window Name="SkipNarrowPhase" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,0}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Skip NarrowPhase" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+            <Window Name="SkipMiddlePhase" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,24}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Skip MiddlePhase" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+        </Window>
+
+        <Window Name="UseOptionPanel" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.65,24},{0.0,24}}" />
+            <Property Name="UnifiedSize" Value="{{0.33,0},{1.0,0}}" />
+            <Property Name="Alpha" Value="0.9" />
+            <Property Name="InheritsAlpha" Value="False" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+
+            <Window Name="UseCollisionCache" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,0}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Use Collision Cache" />
+                <Property Name="Selected" Value="False" />
+            </Window>
+
+            <Window Name="UseThreads" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,24}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Use Threads" />
+                <Property Name="Selected" Value="True" />
+            </Window>
+
+            <Window Name="UsePipelining" Type="DCollide/Checkbox">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,48}}" />
+                <Property Name="UnifiedMaxSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedMinSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="UnifiedSize" Value="{{1.0,0},{0.05,0}}" />
+                <Property Name="InheritsAlpha" Value="False" />
+                <Property Name="Text" Value="Use Pipelining" />
+                <Property Name="Selected" Value="True" />
+            </Window>
+
+            <Window Name="StepButton" Type="DCollide/Button">
+                <Property Name="UnifiedPosition" Value="{{0.0,0},{0.0,96}}" />
+                <Property Name="UnifiedSize" Value="{{0.5,0},{0.0,24}}" />
+                <Property Name="Text" Value="Step" />
+            </Window>        
+        </Window>
+    </Window>
+    
+    <Window Name="CollisionResultsContainer" Type="DCollide/StaticText">
+        <Property Name="UnifiedPosition" Value="{{0.0,8},{1.0,-164}}" />
+        <Property Name="UnifiedSize" Value="{{0.3,0},{0.0,156}}" />
+        <Property Name="UnifiedMaxSize" Value="{{0.3,0},{0.0,156}}" />
+        <Property Name="UnifiedMinSize" Value="{{0.3,0},{0.0,156}" />
+        <Property Name="Alpha" Value="0.7" />
+        <Property Name="FrameEnabled" Value="True" />
+        <Property Name="BackgroundEnabled" Value="True" />
+        
+        <Window Name="CollisionResultsHeader" Type="DCollide/StaticText" >
+            <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,8}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.0,20}}" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+        </Window>
+        <Window Name="CollisionsBroadphase" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,30}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.0,20}}" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+        </Window>
+        <Window Name="CollisionsMiddlephase" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,52}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.0,20}}" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+        </Window>
+        <Window Name="CollisionsNarrowphase" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,74}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.0,20}}" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+        </Window>
+        <Window Name="TimingPipeline" Type="DCollide/StaticText">
+            <Property Name="UnifiedPosition" Value="{{0.0,8},{0.0,96}}" />
+            <Property Name="UnifiedSize" Value="{{1.0,0},{0.0,20}}" />
+            <Property Name="FrameEnabled" Value="False" />
+            <Property Name="BackgroundEnabled" Value="False" />
+        </Window>
+    </Window>
+</Window>
+</GUILayout>
+<!--
+     vim: et sw=4 ts=4 textwidth=0
+-->

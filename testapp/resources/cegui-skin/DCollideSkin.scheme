@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GUIScheme Name="DCollide">
+    <Imageset Name="DCollide" Filename="DCollide.imageset" />
+    
+    <Font Name="Vera" Filename="Vera.font" />
+    
+    <LookNFeel Filename="DCollide.looknfeel" />
+    <WindowRendererSet Filename="CEGUIFalagardWRBase" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Button"
+        TargetType="CEGUI/PushButton"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/Button" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Checkbox"
+        TargetType="CEGUI/Checkbox"
+        Renderer="Falagard/ToggleButton"
+        LookNFeel="DCollide/Checkbox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ImageButton"
+        TargetType="CEGUI/PushButton"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/ImageButton" />
+    
+    <FalagardMapping
+        WindowType="DCollide/RadioButton"
+        TargetType="CEGUI/RadioButton"
+        Renderer="Falagard/ToggleButton"
+        LookNFeel="DCollide/RadioButton" />
+    
+    <FalagardMapping
+        WindowType="DCollide/FrameWindow"
+        TargetType="CEGUI/FrameWindow"
+        Renderer="Falagard/FrameWindow"
+        LookNFeel="DCollide/FrameWindow" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Titlebar"
+        TargetType="CEGUI/Titlebar"
+        Renderer="Falagard/Titlebar"
+        LookNFeel="DCollide/Titlebar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/SystemButton"
+        TargetType="CEGUI/PushButton"
+        Renderer="Falagard/SystemButton"
+        LookNFeel="DCollide/Button" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Editbox"
+        TargetType="CEGUI/Editbox"
+        Renderer="Falagard/Editbox"
+        LookNFeel="DCollide/Editbox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/MultiLineEditbox"
+        TargetType="CEGUI/MultiLineEditbox"
+        Renderer="Falagard/MultiLineEditbox"
+        LookNFeel="DCollide/MultiLineEditbox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Menubar"
+        TargetType="CEGUI/Menubar"
+        Renderer="Falagard/Menubar"
+        LookNFeel="DCollide/Menubar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/PopupMenu"
+        TargetType="CEGUI/PopupMenu"
+        Renderer="Falagard/PopupMenu"
+        LookNFeel="DCollide/PopupMenu" />
+    
+    <FalagardMapping
+        WindowType="DCollide/MenuItem"
+        TargetType="CEGUI/MenuItem"
+        Renderer="Falagard/MenuItem"
+        LookNFeel="DCollide/MenuItem" />
+    
+    <FalagardMapping
+        WindowType="DCollide/AlternateProgressBar"
+        TargetType="CEGUI/ProgressBar"
+        Renderer="Falagard/ProgressBar"
+        LookNFeel="DCollide/AltProgressBar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ProgressBar"
+        TargetType="CEGUI/ProgressBar"
+        Renderer="Falagard/ProgressBar"
+        LookNFeel="DCollide/ProgressBar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/VUMeter"
+        TargetType="CEGUI/ProgressBar"
+        Renderer="Falagard/ProgressBar"
+        LookNFeel="DCollide/VUMeter" />
+    
+    <FalagardMapping
+        WindowType="DCollide/VerticalScrollbar"
+        TargetType="CEGUI/Scrollbar"
+        Renderer="Falagard/Scrollbar"
+        LookNFeel="DCollide/VerticalScrollbar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/HorizontalScrollbar"
+        TargetType="CEGUI/Scrollbar"
+        Renderer="Falagard/Scrollbar"
+        LookNFeel="DCollide/HorizontalScrollbar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/VerticalScrollbarThumb"
+        TargetType="CEGUI/Thumb"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/VerticalScrollbarThumb" />
+    
+    <FalagardMapping
+        WindowType="DCollide/HorizontalScrollbarThumb"
+        TargetType="CEGUI/Thumb"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/HorizontalScrollbarThumb" />
+    
+    <FalagardMapping
+        WindowType="DCollide/LargeVerticalScrollbar"
+        TargetType="CEGUI/Scrollbar"
+        Renderer="Falagard/Scrollbar"
+        LookNFeel="DCollide/LargeVerticalScrollbar" />
+    
+    <FalagardMapping
+        WindowType="DCollide/LargeVerticalScrollbarThumb"
+        TargetType="CEGUI/Thumb"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/LargeVerticalScrollbarThumb" />
+    
+    <FalagardMapping
+        WindowType="DCollide/TabButton"
+        TargetType="CEGUI/TabButton"
+        Renderer="Falagard/TabButton"
+        LookNFeel="DCollide/TabButton" />
+    
+    <FalagardMapping
+        WindowType="DCollide/TabControl"
+        TargetType="CEGUI/TabControl"
+        Renderer="Falagard/TabControl"
+        LookNFeel="DCollide/TabControl" />
+    
+    <FalagardMapping
+        WindowType="DCollide/TabContentPane"
+        TargetType="DefaultWindow"
+        Renderer="Falagard/Default"
+        LookNFeel="DCollide/TabContentPane" />
+    
+    <FalagardMapping
+        WindowType="DCollide/TabButtonPane"
+        TargetType="DefaultWindow"
+        Renderer="Falagard/Default"
+        LookNFeel="DCollide/TabButtonPane" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ComboDropList"
+        TargetType="CEGUI/ComboDropList"
+        Renderer="Falagard/Listbox"
+        LookNFeel="DCollide/ComboDropList" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ComboEditbox"
+        TargetType="CEGUI/Editbox"
+        Renderer="Falagard/Editbox"
+        LookNFeel="DCollide/ComboEditbox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Combobox"
+        TargetType="CEGUI/Combobox"
+        Renderer="Falagard/Default"
+        LookNFeel="DCollide/Combobox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Listbox"
+        TargetType="CEGUI/Listbox"
+        Renderer="Falagard/Listbox"
+        LookNFeel="DCollide/Listbox" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ListHeader"
+        TargetType="CEGUI/ListHeader"
+        Renderer="Falagard/ListHeader"
+        LookNFeel="DCollide/ListHeader" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ListHeaderSegment"
+        TargetType="CEGUI/ListHeaderSegment"
+        Renderer="Falagard/ListHeaderSegment"
+        LookNFeel="DCollide/ListHeaderSegment" />
+    
+    <FalagardMapping
+        WindowType="DCollide/MultiColumnList"
+        TargetType="CEGUI/MultiColumnList"
+        Renderer="Falagard/MultiColumnList"
+        LookNFeel="DCollide/MultiColumnList" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Slider"
+        TargetType="CEGUI/Slider"
+        Renderer="Falagard/Slider"
+        LookNFeel="DCollide/Slider" />
+    
+    <FalagardMapping
+        WindowType="DCollide/SliderThumb"
+        TargetType="CEGUI/Thumb"
+        Renderer="Falagard/Button"
+        LookNFeel="DCollide/SliderThumb" />
+    
+    <FalagardMapping
+        WindowType="DCollide/ScrollablePane"
+        TargetType="CEGUI/ScrollablePane"
+        Renderer="Falagard/ScrollablePane"
+        LookNFeel="DCollide/ScrollablePane" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Spinner"
+        TargetType="CEGUI/Spinner"
+        Renderer="Falagard/Default"
+        LookNFeel="DCollide/Spinner" />
+    
+    <FalagardMapping
+        WindowType="DCollide/Tooltip"
+        TargetType="CEGUI/Tooltip"
+        Renderer="Falagard/Tooltip"
+        LookNFeel="DCollide/Tooltip" />
+    
+    <FalagardMapping
+        WindowType="DCollide/StaticImage"
+        TargetType="DefaultWindow"
+        Renderer="Falagard/StaticImage"
+        LookNFeel="DCollide/StaticImage" />
+    
+    <FalagardMapping
+        WindowType="DCollide/StaticText"
+        TargetType="DefaultWindow"
+        Renderer="Falagard/StaticText"
+        LookNFeel="DCollide/StaticText" />
+    
+</GUIScheme>
